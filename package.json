@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server/index",
     "start": "node server/index",
-    "client": "npm start --prefix client"
+    "client": "npm start --prefix client",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client"
   },
   "author": "natnael meresa",
   "license": "ISC",

@@ -143,6 +143,9 @@ img {
 .sort-form{
   width: 150px !important;
 }
+.sing-register{
+  margin-left: 100px;
+}
 
 .view{
   display: flex;

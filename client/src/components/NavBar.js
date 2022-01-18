@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,13 +27,15 @@ const NavBar = () => {
               <SearchBox />
             </Nav>
             <Nav>
-              <Nav.Link className="add-product">
-                <Link to="/create/product" className="link text-light">
-                  <i class="fas fa-plus"></i> ADD PRODUCT
-                </Link>
-              </Nav.Link>
+              
               {userInfo ? (
-                
+                  <>
+                    <Nav.Link className="add-product">
+                      <Link as='a' to="/create/product" className="link text-light">
+                      <i class="fas fa-plus"></i> ADD PRODUCT
+                      </Link>
+                     </Nav.Link>
+
                     <a
                       className="dropdown-item text-light"
                       href="#"
@@ -44,17 +45,19 @@ const NavBar = () => {
                     >
                       <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                       Logout
-                    </a>      
+                    </a>
+                  
+                  </>     
                 
               ) : (
                 <>
-                  <Nav.Link>
-                    <Link to="/login" className="link text-light">
+                  <Nav.Link className="sing-register">
+                    <Link to="/login" className="link text-light ml-2">
                       <li class="fas fa-user"></li> SING IN
                     </Link>
                   </Nav.Link>
                   <Nav.Link>
-                  <Link to="/login" className="link text-light">
+                  <Link to="/register" className="link text-light">
                     <li class="fas fa-user"></li> REGISTER
                   </Link>
                 </Nav.Link>

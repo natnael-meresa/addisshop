@@ -33,12 +33,18 @@ const CreateProduct = () => {
   const { userInfo } = userLogin;
 
   const productCreate = useSelector((state) => state.productCreate);
-  const { loading, error, success } = productCreate;
-
+  let { loading, error, success } = productCreate;
   const navigate = useNavigate();
 
+  useEffect(() => {
 
-    const uploadFileHandler = async (e) => {
+    if(success){
+      success = null;
+      navigate(`/search?q=${name}`);
+    }
+  }, [success, navigate]);
+
+  const uploadFileHandler = async (e) => {
       const file = e.target.files[0]
       const formData = new FormData()
       formData.append('image', file)
@@ -65,10 +71,7 @@ const CreateProduct = () => {
 
     dispatch(createProduct(name, price, image, brand, category, description, countInStock));
 
-    
-    if(success){
-      navigate(`/search?q=${name}`);
-    }
+
   };
 
 

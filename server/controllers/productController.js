@@ -14,7 +14,7 @@ const getProducts = asyncHandler(async (req, res) => {
     //     console.log(keyword)
     // const count = await Product.countDocuments({...keyword})
     // const products = await Product.find({ ...keyword}).limit(pageSize).skip(pageSize * (page - 1))
-
+    console.log('her is the reqest !@##################################')
     const resPerPage = 4;
     const productCount = await Product.countDocuments();
     const searchFeatures = new SEARCHFeatures(Product.find(), req.query).search().filter().pagination(resPerPage).sort(req.query.sort)
@@ -22,6 +22,8 @@ const getProducts = asyncHandler(async (req, res) => {
     const products = await searchFeatures.query;
 
     // res.json({products, page, pages: Math.ceil(count / pageSize)})
+    console.dir(products)
+
     res.status(200).json({
         success:true,
         products
@@ -127,8 +129,9 @@ const createProductReview = asyncHandler(async (req, res) => {
 })
 
 const getTopProducts = asyncHandler(async (req, res) => {
-    const products = await Product.find({}).sort({ rating: -1}).limit(3)
+    const products = await Product.find({}).sort({ rating: -1}).limit(9)
     console.dir(products)
+    res.header('Cache-Control', 'no-cache, no-store, must-revalidate')
     res.json(products)
 })
 

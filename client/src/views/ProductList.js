@@ -160,31 +160,35 @@ const { loading, error, products , page, pages} = producetList;
                                         </Form.Select>
                                     </Form.Group>
                                 </Col>
-                                <Col md={6} className=" text-center text-md-right mt-2 mt-md-0">
-                                    <div className="view">
-                                        <strong className="view-left">Views</strong>
-                                        <ul className="list-inline view-switcher" >
-                                            <li className="list-inline-item">
-                                                <a href="#"><i class="fas fa-th-large"></i></a>
-                                            </li>
-                                            <li className="list-inline-item">
-                                                <a href="#" className="text-info"><i class="fas fa-bars"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </Col>
+                                
                             </Row>
                         </div>
                         <div class="product-grid-list">
-                            <Row className="mt-5">
-                                {products.map((product) => (
-                                    <Col key={product._id} lg={4} md={6} sm={12}>
-                                        <div class="product-item bg-light">
-                                            <Product product={product}></Product>
-                                        </div>
-                                    </Col>
-                                ))}
-                            </Row>
+                        {loading ? (
+                            <Loader />
+                            ) : error ? (
+                            <Message variant="danger">{error}</Message>
+                            ) : (
+                            <>
+                                <Row className="mt-5">
+                                {products.length >= 1 ? (
+                                    products.map((product) => (
+                                        <Col key={product._id} lg={4} md={6} sm={12}>
+                                            <div class="product-item bg-light">
+                                                <Product product={product}></Product>
+                                            </div>
+                                        </Col>
+                                    ))
+                                ): (
+                                    <div class="product-item">
+                                        <h2>Sorray! we could not found what you are loking for</h2>
+                                    </div>
+                                )}   
+
+
+                                </Row>
+                            </>
+                            )}
                         </div>
                     </Col>
                 </Row>

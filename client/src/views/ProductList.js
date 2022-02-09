@@ -154,9 +154,9 @@ const { loading, error, products , page, pages} = producetList;
                                         <Form.Label column  sm={2}>Sort</Form.Label>
                                         <Form.Select size="sm" className="sort-form" sm={10} value={sort} onChange={e => {setSort(e.target.value);}}>
                                             <option>Most Recent</option>
-                                            <option value="rating">Most Popular</option>
-                                            <option value="-price">Lowest Price</option>
-                                            <option value="price">Highest Price</option>
+                                            <option value="-rating">Most Popular</option>
+                                            <option value="price">Lowest Price</option>
+                                            <option value="-price">Highest Price</option>
                                         </Form.Select>
                                     </Form.Group>
                                 </Col>
